@@ -201,41 +201,30 @@
 
 })()
 
-
 // massage 
-
 document.addEventListener('DOMContentLoaded', function() {
   const contactForm = document.getElementById("contact-form");
   const loader = document.querySelector(".loader");
   
-  // Hide the loader initially
+ 
   loader.style.display = "none";
 
-  // Form submission handler
   contactForm.addEventListener("submit", function(e) {
     e.preventDefault();
-    
-    // Show the loader
     loader.style.display = "block";
     
     const url = e.target.action;
     const formData = new FormData(contactForm);
-
-    // Fetch API to submit the form
     fetch(url, {
       method: "POST",
       body: formData,
       mode: "no-cors",
     })
     .then(() => {
-      // Hide the loader
       loader.style.display = "none";
-      
-      // Redirect to thank you page
       window.location.href = "/thankyou.html";
     })
     .catch((e) => {
-      // Hide the loader in case of error
       loader.style.display = "none";
       alert("Error occurred");
     });
